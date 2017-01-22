@@ -7,11 +7,24 @@
     <h1>{{ _('Tags') }}</h1>
   </header>
   <div>
+    {% if TAG_CLOUD_ENABLED %}
+    <ul class="list">
+      {%- for tag in tag_cloud %}
+            <li class="tag-{{ tag.1 }}">
+                <a href="{{ SITEURL }}/{{ tag.0.url }}">{{ tag.0 }}</a>
+                {% if TAG_CLOUD_BADGE %}
+                    <span class="badge">({{ tag.2 }})</span>
+                {% endif %}
+            </li>
+      {% endfor %}
+    </ul>
+    {% else %}
     <ul class="list">
       {%- for tag, articles in tags|sort %}
           <li><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a> ({{ articles|count }})</li>
       {% endfor %}
     </ul>
+    {% endif %}
   </div>
 </article>
 {% endblock %}
