@@ -21,6 +21,11 @@
       {% if 'post_stats' in PLUGINS %}
         &#8226; {{ article.stats['read_mins'] }} min read
       {% endif %}
+
+      {% if PAGE_VIEW_ENABLED %}
+      &nbsp; | &nbsp;
+      <span id="/{{ article.url }}" class="leancloud_visitors" data-flag-title="{{ article.slug }}">&nbsp;Views</span>
+      {% endif %}
     </p>
   </header>
 
