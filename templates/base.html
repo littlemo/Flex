@@ -9,6 +9,12 @@
 <head>
   <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
 
+  {% if CUSTOM_CSS_BEFORE_THEME %}
+    {% for css in CUSTOM_CSS_BEFORE_THEME %}
+        <link href="{{ SITEURL }}/{{ css }}" rel="stylesheet">
+    {% endfor %}
+  {% endif %}
+
   {% if USE_LESS %}
     <link rel="stylesheet/less" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/stylesheet/style.less">
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
