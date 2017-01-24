@@ -90,6 +90,24 @@
         })();
     </script>
   {% endif %}
+
+{% if TAG_CLOUD_ENABLED %}
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/stylesheet/tagcloud.min.css">
+    <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/jquery.svg3dtagcloud.min.js" type="text/javascript"></script>
+    <style type="text/css">
+        #tag-cloud {
+            padding-top: 100%;
+            width: 100%;
+            padding: 0;
+        }
+    </style>
+{% endif %}
+
+{% if CUSTOM_JS %}
+    {% for js in CUSTOM_JS %}
+    <script src="{{ js }}" type="text/javascript"></script>
+    {% endfor %}
+{% endif %}
 </head>
 <body>
   {% if GOOGLE_TAG_MANAGER %}
@@ -131,6 +149,46 @@
         {% endfor %}
       </ul>
     </div>
+
+{% if TAG_CLOUD_ENABLED %}
+    <div id='tag-cloud'></div>
+    <script>
+        $( document ).ready( function() {
+            var entries = [
+            {% for tag in tag_cloud %}
+                { label: '{{ tag.0 }} ({{ tag.2 }})', url: '{{ SITEURL }}/{{ tag.0.url }}', target: '_top' },
+            {% endfor %}
+            ];
+
+            var cw = $('#tag-cloud').width();
+            if (cw > 400) {cw = 400}
+            var settings = {
+                entries: entries,
+                width: cw,
+                height: cw,
+                radius: '65%',
+                radiusMin: 75,
+                bgDraw: false,
+                bgColor: '#494A5F',
+                opacityOver: 1.00,
+                opacityOut: 0.05,
+                opacitySpeed: 6,
+                fov: 800,
+                speed: 0.4,
+                fontFamily: 'Oswald, Arial, sans-serif',
+                fontSize: '15',
+                fontColor: '#fff',
+                fontWeight: 'bold',//bold
+                fontStyle: 'normal',//italic
+                fontStretch: 'normal',//wider, narrower, ultra-condensed, extra-condensed, condensed, semi-condensed, semi-expanded, expanded, extra-expanded, ultra-expanded
+                fontToUpperCase: false
+            };
+
+            //var svg3DTagCloud = new SVG3DTagCloud( document.getElementById( 'holder'  ), settings );
+            $( '#tag-cloud' ).svg3DTagCloud( settings );
+        } );
+    </script>
+{% endif %}
 
     {% if GOOGLE_ADSENSE and GOOGLE_ADSENSE.ads.aside %}
       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
