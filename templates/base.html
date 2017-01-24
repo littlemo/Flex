@@ -12,7 +12,7 @@
 
   {% if CUSTOM_CSS_BEFORE_THEME %}
     {% for css in CUSTOM_CSS_BEFORE_THEME %}
-        <link href="{{ SITEURL }}/{{ css }}" rel="stylesheet">
+        <link href="{{ css }}" rel="stylesheet">
     {% endfor %}
   {% endif %}
 
@@ -28,7 +28,7 @@
 
   {% if CUSTOM_CSS %}
     {% for css in CUSTOM_CSS %}
-        <link href="{{ SITEURL }}/{{ css }}" rel="stylesheet">
+        <link href="{{ css }}" rel="stylesheet">
     {% endfor %}
   {% endif %}
 
