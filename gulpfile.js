@@ -13,6 +13,16 @@ gulp.task('less', function () {
         .pipe(gulp.dest('./static/stylesheet'));
 });
 
+gulp.task('css', function () {
+    return gulp.src(['./static/stylesheet/*.css', '!./static/stylesheet/*min.css'])
+        .pipe(less())
+        .pipe(minify())
+        .pipe(rename({
+            extname: '.min.css'
+        }))
+        .pipe(gulp.dest('./static/stylesheet'));
+});
+
 gulp.task('cp', function () {
     return gulp.src('./node_modules/font-awesome/**/*.{min.css,otf,eot,svg,ttf,woff,woff2}')
         .pipe(gulp.dest('./static/font-awesome'));
@@ -28,4 +38,4 @@ gulp.task('pygments', function () {
 });
 
 
-gulp.task('default', ['less', 'cp', 'pygments']);
+gulp.task('default', ['less', 'css', 'cp', 'pygments']);
