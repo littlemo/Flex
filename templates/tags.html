@@ -2,7 +2,8 @@
 {% block title %} &ndash; {{ _('Tags') }}{% endblock %}
 
 {% block content %}
-<article class="single">
+<div class="container">
+<article>
   <header>
     <h1>{{ _('Tags') }}</h1>
     {% if TAG_CLOUD_ENABLED %}
@@ -74,4 +75,5 @@
     {% endif %}
   </div>
 </article>
+</div>
 {% endblock %}

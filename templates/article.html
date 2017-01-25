@@ -10,7 +10,8 @@
 {% block title %} &ndash; {{ article.title|striptags }}{% endblock %}
 
 {% block content %}
-<article class="single">
+<div class="container">
+<article>
   <header>
     <h1 id="{{ article.slug }}">{{ article.title }}</h1>
     <p>
@@ -84,4 +85,5 @@
   {% include "partial/disqus.html" %}
   {% include "partial/duoshuo.html" %}
 </article>
+</div>
 {% endblock %}

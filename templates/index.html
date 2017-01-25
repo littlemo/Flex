@@ -12,6 +12,7 @@
   </script>
 {% endif %}
 
+<div class="container">
 {% for article in articles_page.object_list %}
 <article>
   <header>
@@ -54,6 +55,8 @@
 {% endfor %}
 
 {% include "partial/pagination.html" %}
+
+</div>
 
 {% if GOOGLE_ADSENSE and GOOGLE_ADSENSE.ads.index_bottom %}
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
