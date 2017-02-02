@@ -11,9 +11,10 @@
     <dl>
       {% set previous = {'date': False} %}
       {% for article in dates %}
-        {% if article.locale_date != previous.date %}
-          {% if previous.update({'date': article.locale_date}) %}{% endif %}
-      <dt>{{ article.locale_date }}</dt>
+        {% set locale_date = ' - '.join(article.locale_date.split('-')[:-1]) %}
+        {% if locale_date != previous.date %}
+          {% if previous.update({'date': locale_date}) %}{% endif %}
+      <dt>{{ locale_date }}</dt>
         {% endif %}
       <dd><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></dd>
       {% endfor %}
