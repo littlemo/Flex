@@ -1,0 +1,26 @@
+<p>
+    {{- _('%(icon_calendar)s %(when)s   |   %(icon_page)s %(category)s',
+        icon_calendar='<i class="fa fa-calendar" aria-hidden="true"></i>',
+        when=article.locale_date,
+        icon_page='<i class="fa fa-file-text" aria-hidden="true"></i>',
+        category='<a href="%s/%s">%s</a>'|format(SITEURL, article.category.url, article.category)|safe) -}}
+
+    {%- if article.tags and not HOME_HIDE_TAGS -%}
+        {{- '   |   ' -}}<i class="fa fa-tags" aria-hidden="true"></i>
+        {% for tag in article.tags %}
+        <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %},{% endif %}
+        {% endfor %}
+    {%- endif %}
+
+    {%- if 'post_stats' in PLUGINS -%}
+        {{- '   |   ' -}}
+        {{- _('%(icon_clock)s %(mins)sm',
+            icon_clock='<i class="fa fa-clock-o" aria-hidden="true"></i>',
+            mins=article.stats['read_mins']) -}}
+    {%- endif -%}
+
+    {%- if PAGE_VIEW_ENABLED -%}
+        {{- '   |   ' -}}<i class="fa fa-eye" aria-hidden="true"></i>
+        <span id="/{{ article.url }}" class="leancloud_visitors post-title-link" data-flag-title="{{ article.slug }}"></span>
+    {%- endif -%}
+</p>
