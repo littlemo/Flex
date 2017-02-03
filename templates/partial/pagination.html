@@ -1,14 +1,26 @@
 {% if DEFAULT_PAGINATION %}
-  <div class="pagination">
-  {% if articles_page.has_next() %}
-    <a class="btn" href="{{ SITEURL }}/{{ articles_next_page.url }}">
-      <i class="fa fa-angle-left"></i> {{ _('Older Posts') }}
-    </a>
-  {% endif %}
-  {% if articles_page.has_previous() %}
-    <a class="btn float-right" href="{{ SITEURL }}/{{ articles_previous_page.url }}">
-      {{ _('Newer Posts') }} <i class="fa fa-angle-right"></i>
-    </a>
-  {% endif %}
-  </div>
+{% if articles_page and articles_paginator.num_pages > 1 %}
+<div class="pagination">
+<ul>
+    {% if articles_page.has_previous() %}
+        {% set num = articles_page.previous_page_number() %}
+        <li class="prev"><a href="{{ SITEURL }}/{{ articles_previous_page.url }}">&larr;</a></li>
+    {% else %}
+        <li class="prev disabled"><a href="#">&larr;</a></li>
+    {% endif %}
+    {% for num in range( 1, 1 + articles_paginator.num_pages ) %}
+        {% if num == 1 %}
+        <li class="{{ 'active' if num == articles_page.number else '' }}"><a href="{{ SITEURL }}/{{ page_name }}.html">{{ num }}</a></li>
+        {% else %}
+        <li class="{{ 'active' if num == articles_page.number else '' }}"><a href="{{ SITEURL }}/{{ page_name }}/{{ num if num > 1 else '' }}/">{{ num }}</a></li>
+        {% endif %}
+    {% endfor %}
+    {% if articles_page.has_next() %}
+        <li class="next"><a href="{{ SITEURL }}/{{ articles_next_page.url }}">&rarr;</a></li>
+    {% else %}
+        <li class="next disabled"><a href="#">&rarr;</a></li>
+    {% endif %}
+</ul>
+</div>
+{% endif %}
 {% endif %}
