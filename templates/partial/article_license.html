@@ -2,12 +2,12 @@
     <div class="admonition important">
         <p class="first admonition-title">版权声明</p>
         <p class="last">
-            <p style="font-size:14px; margin:2px 0;">本文出自&nbsp;<a target="_blank" href="{{ SITEURL_DISP }}" title="">“{{ SITENAME }}”&nbsp;</a>博客
+            <p style="font-size:14px; margin:2px 0;">本文出自&nbsp;“<a target="_blank" href="{{ SITEURL_DISP }}" title=""><i class="fa fa-paper-plane" aria-hidden="true"></i>{{ SITENAME }}</a>”&nbsp;博客
             {% if CC_LICENSE %}
-            ，作者 <a target="_blank" href="{{ SITEURL_DISP }}">{{ AUTHOR }}</a>&nbsp;采用 <a target="_blank" href="https://creativecommons.org/licenses/{{ CC_LICENSE['slug'] }}/{{ CC_LICENSE['version'] }}/deed.zh">署名-非商业性使用-相同方式共享</a> 协议。
+            ，作者 <a target="_blank" href="{{ SITEURL_DISP }}"><i class="fa fa-user" aria-hidden="true"></i>{{ AUTHOR }}</a>&nbsp;采用 <a target="_blank" href="https://creativecommons.org/licenses/{{ CC_LICENSE['slug'] }}/{{ CC_LICENSE['version'] }}/deed.zh"><i class="fa fa-cc" aria-hidden="true"></i>署名-非商业性使用-相同方式共享</a> 协议。
             {% endif %}
             </p>
-            <p style="font-size:14px; margin:2px 0;">转载时请务必以超链接形式标明文章 <a target="_blank" href="{{ SITEURL_DISP }}{{ article.url }}">原始出处</a> 、作者信息和本声明。否则将追究法律责任。<a target="_blank" href="{{ SITEURL_DISP }}{{ article.url }}">{{ SITEURL_DISP }}{{ article.url }}</a></p>
+            <p style="font-size:14px; margin:2px 0;">转载时请务必以超链接形式标明文章 <a target="_blank" href="{{ SITEURL_DISP }}{{ article.url }}"><i class="fa fa-file-text" aria-hidden="true"></i>原始出处</a> 、作者信息和本声明。否则将追究法律责任。<br><a target="_blank" href="{{ SITEURL_DISP }}{{ article.url }}"><i class="fa fa-link" aria-hidden="true"></i> {{ SITEURL_DISP }}{{ article.url }}</a></p>
         </p>
     </div>
 </div>
