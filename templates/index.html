@@ -20,12 +20,10 @@
     {% include "partial/article_info.html" %}
   </header>
   <div>
-    {% if summarise or article.metadata['summary'] or SUMMARY_MAX_LENGTH %}
+  {% if summarise or article.metadata['summary'] or SUMMARY_MAX_LENGTH %}
       {{ article.summary }}
+  {% endif %}
       <br>
-    {% else %}
-      {{ article.content }}
-    {% endif %}
       <a class="btn" href="{{ SITEURL }}/{{ article.url }}">{{ _('Continue reading') }}</a>
   </div>
   {% if not loop.last %}
