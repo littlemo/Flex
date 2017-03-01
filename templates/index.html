@@ -14,6 +14,7 @@
 
 <div class="container">
 {% for article in articles_page.object_list %}
+{% if "noindex" not in article.tags or page_name != "index" %}
 <article>
   <header>
     <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
@@ -30,6 +31,7 @@
   <hr />
   {% endif %}
 </article>
+{% endif %}
 {% endfor %}
 
 {% include "partial/pagination.html" %}
